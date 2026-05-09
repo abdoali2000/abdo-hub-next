@@ -1,7 +1,7 @@
 "use client"
 
 import { toggleUserRole } from "@/lib/actions/user"
-import { useTransition } from "react"
+import { useTransition, useState } from "react" 
 
 type User = {
   id: string
@@ -18,9 +18,8 @@ type UsersTableProps = {
 
 export function UsersTable({ users, currentUserEmail }: UsersTableProps) {
   const [isPending, startTransition] = useTransition()
-  const [message, setMessage] = useTransition()
-  const [successMessage, setSuccessMessage] = useTransition()
-  const [errorMessage, setErrorMessage] = useTransition()
+const [successMessage, setSuccessMessage] = useState<string>("")
+const [errorMessage, setErrorMessage] = useState<string>("")
 
   const handleToggleRole = (userId: string) => {
     startTransition(async () => {
