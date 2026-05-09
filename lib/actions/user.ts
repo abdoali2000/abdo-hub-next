@@ -59,3 +59,26 @@ export async function becomeSeller(): Promise<UserActionResult> {
 
   return { success: true, message: "Your account is now a seller." }
 }
+
+export async function toggleUserRole(userId: string): Promise<UserActionResult> {
+  const session = await auth()
+
+  if (session?.user?.role !== "ADMIN") {
+    return { success: false, message: "Unauthorized. Admin only." }
+  }
+
+  const user = await prisma.user.findUnique({ where: { id: userId } })
+  
+  if (!user) {
+    return { success: false, message: "User not found." }
+  }
+
+  const newRole = user.role === "USER" ? "ADMIN" : "USER"
+
+  await prisma.user.update({
+    where: { id: userId },
+    data: { role: newRole },
+  })
+
+  return { success: true, message: `User role updated to ${newRole}.` }
+}
