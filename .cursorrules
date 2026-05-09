@@ -1,0 +1,25 @@
+# Abdo-Hub-Next Project Rules
+
+## Core Tech Stack
+- Next.js 15 (App Router)
+- Prisma (ORM)
+- NextAuth.js v5 (Beta)
+- Tailwind CSS & Shadcn UI
+- TypeScript (Strict Mode)
+
+## Backend & Logic Preferences
+- Prioritize Functional Logic over UI/Design.
+- Use **Server Actions** for all data mutations (Forms, Auth, CRUD).
+- Use the existing `lib/prisma.ts` singleton for all database interactions.
+- Always implement Role-Based Access Control (RBAC) using the `Role` enum (USER, SELLER, ADMIN).
+
+## Coding Standards
+- **No Comments:** Do not add comments inside the code files.
+- **Language:** Technical explanations must be in English.
+- **Clean Code:** Use descriptive variable names and keep functions small and focused (SOLID principles).
+- **Security:** Always hash passwords using `bcryptjs` before storing. Never expose sensitive fields in API responses.
+
+## Routing & Protection
+- Public routes: `/`, `/login`, `/register`.
+- Protected routes: `/dashboard/**`, `/admin/**`, `/seller/**`.
+- Use `middleware.ts` for centralized route protection.

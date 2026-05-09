@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Abdo Hub
+
+Abdo Hub is a marketplace-style e-commerce MVP built with the Next.js App Router. It supports multi-role authentication, seller product management, checkout, stock updates, and seller order management.
+
+## Tech Stack
+
+- Next.js App Router
+- Prisma
+- Supabase
+- Tailwind CSS
+- NextAuth
+
+## Core Features
+
+- Multi-role authentication for users, sellers, and admins.
+- Product CRUD for sellers, including image upload support.
+- Product catalog with cart and checkout flow.
+- Real-time stock management during checkout.
+- Atomic checkout transactions that create orders, create order items, and decrement stock together.
+- Seller order management with customer details, shipping information, and itemized order views.
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Configure environment variables in `.env`, including the database, Supabase, and auth values required by the app.
+
+3. Push the Prisma schema to the database:
+
+```bash
+npx prisma db push
+```
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## MVP Scope
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The MVP lets customers browse products and place orders while sellers manage products and incoming orders from the dashboard. Admins can access the administrative user management area.
